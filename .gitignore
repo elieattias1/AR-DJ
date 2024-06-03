@@ -1,0 +1,10 @@
+.env
+*.bak
+cross-hands-tiny-prn.weights
+cross-hands-tiny-prn.cfg
+cross-hands-tiny.weights
+cross-hands-tiny.cfg
+cross-hands-yolov4-tiny.weights
+cross-hands-yolov4-tiny.cfg
+cross-hands.weights
+cross-hands.cfg
