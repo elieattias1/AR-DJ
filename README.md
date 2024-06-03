@@ -45,5 +45,5 @@ python main.py
 
 ## Acknowledgments
 
-This project is built on top of the cansik's contribution within the [YOLO Hand Detection project](https://github.com/cansik/yolo-hand-detection/tree/master).
+This project is built on top of the cansik's contribution within the [YOLO Hand Detection](https://github.com/cansik/yolo-hand-detection/tree/master) project.
 
