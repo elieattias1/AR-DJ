@@ -69,7 +69,6 @@ def get_cutoff(cx, min_freq, max_freq, width, cutoff_type="linear"):
     if cutoff_type == "linear":
         return min_freq + cx * (max_freq / width)
     elif cutoff_type == "quadratic":
-        print("cx", cx)
         return min_freq + max_freq * cx**2 * (1 / width) ** 2
 
 

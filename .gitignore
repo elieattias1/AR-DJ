@@ -8,3 +8,6 @@ cross-hands-yolov4-tiny.weights
 cross-hands-yolov4-tiny.cfg
 cross-hands.weights
 cross-hands.cfg
+__pycache__/
+audios/
+.DS_Store

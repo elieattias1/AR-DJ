@@ -81,11 +81,9 @@ min_freq = 0
 
 min_depth = 0
 max_depth = 0.5
-# desired_fps = 300  # You can change this to your desired FPS
 
-# vc.set(cv2.CAP_PROP_FPS, desired_fps)
 print("web cam width, and height", width, height)
-if vc.isOpened():  # try to get the first frame
+if vc.isOpened():
     rval, frame = vc.read()
 else:
     rval = False
@@ -98,7 +96,8 @@ if args.hands != -1:
     hand_count = int(args.hands)
 
 print("starting audio...")
-filename = "audios/starlight.wav"
+
+filename = f"audios/{args.filename}.wav"
 duration, cutoff, depth, frame_count = 60, 500, 0, 4096
 wf = wave.open(filename, "rb")
 
@@ -121,10 +120,8 @@ stream.start_stream()
 try:
     # prev = 0
     while stream.is_active() and (time.time() - start) < duration:
-        # time_elapsed = time.time() - prev
         rval, frame = vc.read()
 
-        # prev = time.time()
         width, height, inference_time, results = yolo.inference(frame)
 
         cx, cy = display_hands(results, frame, hand_count, inference_time)

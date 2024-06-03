@@ -26,35 +26,36 @@ cd models && powershell .\download-models.ps1
 ```
 
 ## Run the Application 
+Add your audio files to the audios folder in the project directory. 
 
 Run the application with the default low-pass filter and tremolo effect:
 
 ```bash
 # with python 3
-python main.py 
+python main.py --filename=your-audio
 ```
 
 Apply a low-pass filter (hand moving along the x-axis) with varying cut-off frequency:
 ```bash
 # with python 3
-python main.py --filter=low
+python main.py --filename=your-audio --filter=low
 ```
 
 Apply a high-pass filter (hand moving along the x-axis) with varying cut-off frequency:
 
 ```bash
 # with python 3
-python main.py --filter=high
+python main.py --filename=your-audio --filter=high
 ```
 
 Apply post-filtering sound effects (hand moving along the y-axis) with varying depth:
 ```bash
 # with python 3
-python main.py --effect=tremolo
+python main.py --filename=your-audio --effect=tremolo
 ```
 ```bash
 # with python 3
-python main.py --effect=vibrato
+python main.py --filename=your-audio --effect=vibrato
 ```
 
 ### Models
