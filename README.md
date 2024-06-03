@@ -60,6 +60,8 @@ python main.py --filename=your-audio --effect=vibrato
 
 ### Models
 
+The following models can be selected by adjusting the --network parameter: `normal`, `tiny`, `prn`, and `v4-tiny`.
+
 - YOLOv3 Cross-Dataset
 	- [Configuration](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands.cfg)
 	- [Weights](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands.weights)
@@ -72,6 +74,9 @@ python main.py --filename=your-audio --effect=vibrato
 - YOLOv4-Tiny Cross-Hands
 	- [Configuration](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands-yolov4-tiny.cfg)
 	- [Weights](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands-yolov4-tiny.weights)
+
+### Considerations
+Larger models result in longer inference times, reducing the number of frames processed per second. Conversely, smaller models offer better performance and a smoother experience, though they may compromise inference quality.
 
 ## Acknowledgments
 

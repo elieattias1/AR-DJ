@@ -102,7 +102,7 @@ if args.hands != -1:
 print("starting audio...")
 
 filename = f"audios/{args.filename}.wav"
-cutoff, depth, frame_count = 500, 0, 4096
+cutoff, depth, frame_count = 500, 0, 8192
 wf = wave.open(filename, "rb")
 
 p = pyaudio.PyAudio()
@@ -126,7 +126,7 @@ try:
     while stream.is_active() and (time.time() - start) < duration:
         rval, frame = vc.read()
 
-        draw_axis(frame)
+        draw_axis(frame, filter_type, effect_type)
         # Display the resulting frame
         width, height, inference_time, results = yolo.inference(frame)
 

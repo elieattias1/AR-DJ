@@ -72,7 +72,7 @@ def get_cutoff(cx, min_freq, max_freq, width, cutoff_type="linear"):
         return min_freq + max_freq * cx**2 * (1 / width) ** 2
 
 
-def draw_axis(frame):
+def draw_axis(frame, filter_type, effect_type):
     height, width, _ = frame.shape
 
     delta_x, delta_y = int(0.02 * width), int(height - 0.01 * height)
@@ -81,17 +81,17 @@ def draw_axis(frame):
         frame,
         (delta_x, height - delta_x),
         (width - delta_x, height - delta_x),
-        (0, 0, 255),
+        (0, 0, 0),
         2,
         tipLength=0.03,
     )
     cv2.putText(
         frame,
-        "Cut-off Frequency",
-        (width // 2 - 100, height - delta_x - 10),
+        f"{filter_type} Pass - Cut-off Frequency",
+        (width // 2 - 500, height - delta_x - 10),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,
-        (0, 0, 255),
+        (0, 0, 0),
         2,
     )
 
@@ -100,17 +100,17 @@ def draw_axis(frame):
         frame,
         (delta_x, height - delta_x),
         (delta_x, delta_x),
-        (0, 0, 255),
+        (0, 0, 0),
         2,
         tipLength=0.03,
     )
     cv2.putText(
         frame,
-        "Effect Depth",
+        f"{effect_type} Depth",
         (delta_x + 10, height // 2),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,
-        (0, 0, 255),
+        (0, 0, 0),
         2,
     )
 
