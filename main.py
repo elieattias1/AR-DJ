@@ -1,5 +1,3 @@
-"""PyAudio Example: Play a wave file (callback version)."""
-
 import cv2
 from yolo import YOLO
 import wave
