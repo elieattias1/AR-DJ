@@ -5,7 +5,7 @@ This project combines the immersive experience of VR with hand detection using Y
 ## Features
 
 - **Hand Detection**: Utilizes YOLO for precise real-time hand tracking.
-- **Real Time & Interactive Audio Processing**: Modulates audio effects dynamically based on hand movements.
+- **Interactive Real Time Audio Processing**: Modulates audio effects dynamically based on hand movements.
 - **Immersive Experience**: Displays a live webcam feed with hand tracking overlays and synchronized audio effects, enhancing the sense of immersion.
 - **Audio Filters**: Supports low-pass and high-pass filters based on hand movement along the x-axis.
 - **Audio Effects**: Applies tremolo or vibrato effects based on hand movement along the y-axis.
