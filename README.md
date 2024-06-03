@@ -75,5 +75,5 @@ python main.py --filename=your-audio --effect=vibrato
 
 ## Acknowledgments
 
-This project is built on top of the [cansik's](https://github.com/cansik) contribution within the [YOLO-Hand -etection](https://github.com/cansik/yolo-hand-detection/tree/master) project.
+This project is built on top of the [cansik's](https://github.com/cansik) contribution within the [YOLO-Hand-Detection](https://github.com/cansik/yolo-hand-detection/tree/master) project.
 
