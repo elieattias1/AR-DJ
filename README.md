@@ -1,12 +1,13 @@
 # VR-DJ
 
-This project combines hand detection using the YOLO (You Only Look Once) algorithm and real-time audio processing. The application captures video from a webcam, detects hands in each frame, and processes audio data based on the detected hand positions.
+This project combines the immersive experience of VR with hand detection using the YOLO (You Only Look Once) algorithm and real-time audio processing. The application captures video from a webcam, detects hand positions in each frame, and transforms audio based on these positions, creating an interactive and immersive VR DJ experience.
 
 ## Features
 
-- **Hand Detection**: Uses YOLO to detect hands in real-time.
-- **Audio Processing**: Applies filters to audio signals based on hand positions.
-- **Real-Time Display**: Shows the webcam feed with detected hand bounding boxes and plays processed audio.
+- **Hand Detection**: Utilizes YOLO for precise real-time hand tracking.
+- **Interactive Audio Processing**: Modulates audio effects dynamically based on hand movements.
+- **Immersive Experience**: Displays a live webcam feed with hand tracking overlays and synchronized audio effects, enhancing the sense of immersion.
+
 
 ## Install Dependencies
 `pip install -r requirements.txt
