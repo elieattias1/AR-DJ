@@ -28,7 +28,7 @@ cd models && powershell .\download-models.ps1
 ## Run the Application 
 Add your audio files to the audios folder in the project directory. 
 
-Run the application with the default low-pass filter and tremolo effect:
+Run the application with the default low-pass filter:
 
 ```bash
 # with python 3
