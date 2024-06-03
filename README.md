@@ -26,7 +26,7 @@ cd models && powershell .\download-models.ps1
 ```
 
 ## Run the Application 
-Add your audio files to the audios folder in the project directory. 
+Add your audio files to the audios folder (as .wav files) in the project directory. 
 
 Run the application with the default low-pass filter:
 
