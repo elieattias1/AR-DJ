@@ -7,6 +7,9 @@ This project combines the immersive experience of VR with hand detection using t
 - **Hand Detection**: Utilizes YOLO for precise real-time hand tracking.
 - **Interactive Audio Processing**: Modulates audio effects dynamically based on hand movements.
 - **Immersive Experience**: Displays a live webcam feed with hand tracking overlays and synchronized audio effects, enhancing the sense of immersion.
+- **Audio Filters**: Supports low-pass and high-pass filters based on hand movement along the x-axis.
+- **Audio Effects**: Applies tremolo or vibrato effects based on hand movement along the y-axis.
+
 
 
 ## Install Dependencies
@@ -23,9 +26,35 @@ cd models && powershell .\download-models.ps1
 ```
 
 ## Run the Application 
+
+Run the application with the default low-pass filter and tremolo effect:
+
 ```bash
 # with python 3
-python main.py
+python main.py 
+```
+
+Apply a low-pass filter (hand moving along the x-axis) with varying cut-off frequency:
+```bash
+# with python 3
+python main.py --filter=low
+```
+
+Apply a high-pass filter (hand moving along the x-axis) with varying cut-off frequency:
+
+```bash
+# with python 3
+python main.py --filter=high
+```
+
+Apply post-filtering sound effects (hand moving along the y-axis) with varying depth:
+```bash
+# with python 3
+python main.py --effect=tremolo
+```
+```bash
+# with python 3
+python main.py --effect=vibrato
 ```
 
 ### Models
@@ -45,5 +74,5 @@ python main.py
 
 ## Acknowledgments
 
-This project is built on top of the cansik's contribution within the [YOLO Hand Detection](https://github.com/cansik/yolo-hand-detection/tree/master) project.
+This project is built on top of the cansik's contribution within the [YOLO-Hand -etection](https://github.com/cansik/yolo-hand-detection/tree/master) project.
 
