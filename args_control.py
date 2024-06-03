@@ -70,6 +70,13 @@ def get_configs():
         type=int,
         help="Minimum depth of audio effects",
     )
+
+    ap.add_argument(
+        "--duration",
+        default=120,
+        type=int,
+        help="how long the song will play (in seconds)",
+    )
     args = ap.parse_args()
 
     return args

@@ -8,6 +8,7 @@ from utils import (
     filter_signal_butter,
     get_cutoff,
     apply_effect,
+    draw_axis,
 )
 import pyaudio
 import numpy as np
@@ -51,6 +52,7 @@ max_freq = args.max_freq
 max_depth = args.max_depth
 min_freq = args.min_freq
 min_depth = args.min_depth
+duration = args.duration
 
 start = time.time()
 
@@ -100,7 +102,7 @@ if args.hands != -1:
 print("starting audio...")
 
 filename = f"audios/{args.filename}.wav"
-duration, cutoff, depth, frame_count = 60, 500, 0, 4096
+cutoff, depth, frame_count = 500, 0, 4096
 wf = wave.open(filename, "rb")
 
 p = pyaudio.PyAudio()
@@ -124,6 +126,8 @@ try:
     while stream.is_active() and (time.time() - start) < duration:
         rval, frame = vc.read()
 
+        draw_axis(frame)
+        # Display the resulting frame
         width, height, inference_time, results = yolo.inference(frame)
 
         cx, cy = display_hands(results, frame, hand_count, inference_time)

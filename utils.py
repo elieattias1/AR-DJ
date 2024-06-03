@@ -72,6 +72,49 @@ def get_cutoff(cx, min_freq, max_freq, width, cutoff_type="linear"):
         return min_freq + max_freq * cx**2 * (1 / width) ** 2
 
 
+def draw_axis(frame):
+    height, width, _ = frame.shape
+
+    delta_x, delta_y = int(0.02 * width), int(height - 0.01 * height)
+    # Draw the x-axis (horizontal line with arrow)
+    cv2.arrowedLine(
+        frame,
+        (delta_x, height - delta_x),
+        (width - delta_x, height - delta_x),
+        (0, 0, 255),
+        2,
+        tipLength=0.03,
+    )
+    cv2.putText(
+        frame,
+        "Cut-off Frequency",
+        (width // 2 - 100, height - delta_x - 10),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        2,
+        (0, 0, 255),
+        2,
+    )
+
+    # Draw the y-axis (vertical line with arrow)
+    cv2.arrowedLine(
+        frame,
+        (delta_x, height - delta_x),
+        (delta_x, delta_x),
+        (0, 0, 255),
+        2,
+        tipLength=0.03,
+    )
+    cv2.putText(
+        frame,
+        "Effect Depth",
+        (delta_x + 10, height // 2),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        2,
+        (0, 0, 255),
+        2,
+    )
+
+
 def display_hands(results, frame, hand_count, inference_time):
     cv2.putText(
         frame,
@@ -93,7 +136,7 @@ def display_hands(results, frame, hand_count, inference_time):
         # draw a bounding box rectangle and label on the image
         color = (0, 255, 255)
         cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-        cv2.circle(frame, (int(cx), int(cy)), 5, (0, 0, 255), -1)
+        cv2.circle(frame, (int(cx), int(cy)), 5, (255, 0, 0), -1)
         text = "%s (%s)" % (name, round(confidence, 2))
         cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
