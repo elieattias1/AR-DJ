@@ -6,7 +6,7 @@ def get_configs():
     ap.add_argument(
         "-n",
         "--network",
-        default="normal",
+        default="tiny",
         choices=["normal", "tiny", "prn", "v4-tiny"],
         help="Network Type",
     )
