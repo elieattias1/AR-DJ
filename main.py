@@ -20,7 +20,28 @@ from args_control import get_configs
 
 args = get_configs()
 print("loading yolo...")
-yolo = YOLO("models/cross-hands.cfg", "models/cross-hands.weights", ["hand"])
+if args.network == "normal":
+    print("loading yolo...")
+    yolo = YOLO("models/cross-hands.cfg", "models/cross-hands.weights", ["hand"])
+elif args.network == "prn":
+    print("loading yolo-tiny-prn...")
+    yolo = YOLO(
+        "models/cross-hands-tiny-prn.cfg",
+        "models/cross-hands-tiny-prn.weights",
+        ["hand"],
+    )
+elif args.network == "v4-tiny":
+    print("loading yolov4-tiny-prn...")
+    yolo = YOLO(
+        "models/cross-hands-yolov4-tiny.cfg",
+        "models/cross-hands-yolov4-tiny.weights",
+        ["hand"],
+    )
+else:
+    print("loading yolo-tiny...")
+    yolo = YOLO(
+        "models/cross-hands-tiny.cfg", "models/cross-hands-tiny.weights", ["hand"]
+    )
 
 yolo.size = int(args.size)
 yolo.confidence = float(args.confidence)
