@@ -42,5 +42,7 @@ python main.py
 	- [Configuration](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands-yolov4-tiny.cfg)
 	- [Weights](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands-yolov4-tiny.weights)
 
+## Acknowledgments
 
+This project is built on top of the cansik's contribution within the [YOLO Hand Detection project](https://github.com/cansik/yolo-hand-detection/tree/master).
 
