@@ -19,6 +19,15 @@ def get_configs():
 
     ap.add_argument("--filename", type=str, default="", help="Audio file to play")
     ap.add_argument("-d", "--device", type=int, default=0, help="Device to use")
+
+    ap.add_argument("-s", "--size", default=416, help="Size for yolo")
+    ap.add_argument("-c", "--confidence", default=0.2, help="Confidence for yolo")
+    ap.add_argument(
+        "-nh",
+        "--hands",
+        default=-1,
+        help="Total number of hands to be detected per frame (-1 for all)",
+    )
     ap.add_argument(
         "--filter",
         default="low",
@@ -33,17 +42,33 @@ def get_configs():
     )
     ap.add_argument(
         "--effect",
-        default="tremolo",
+        default="",
         type=str,
         help="Applies effect on top of filtered signal",
     )
-    ap.add_argument("-s", "--size", default=416, help="Size for yolo")
-    ap.add_argument("-c", "--confidence", default=0.2, help="Confidence for yolo")
     ap.add_argument(
-        "-nh",
-        "--hands",
-        default=-1,
-        help="Total number of hands to be detected per frame (-1 for all)",
+        "--max_freq",
+        default=5000,
+        type=int,
+        help="Maximum cutoff frequency",
+    )
+    ap.add_argument(
+        "--max_depth",
+        default=0.5,
+        type=int,
+        help="Maximum depth of audio effects",
+    )
+    ap.add_argument(
+        "--min_freq",
+        default=0,
+        type=int,
+        help="Minimum cutoff frequency",
+    )
+    ap.add_argument(
+        "--min_depth",
+        default=0,
+        type=int,
+        help="Minimum depth of audio effects",
     )
     args = ap.parse_args()
 

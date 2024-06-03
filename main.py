@@ -46,6 +46,12 @@ yolo.confidence = float(args.confidence)
 filter_type = args.filter
 cutoff_type = args.cutoff
 effect_type = args.effect
+
+max_freq = args.max_freq
+max_depth = args.max_depth
+min_freq = args.min_freq
+min_depth = args.min_depth
+
 start = time.time()
 
 
@@ -59,14 +65,15 @@ def callback(in_data, frame_count, time_info, status):
 
     if cutoff:
         int_data = np.frombuffer(data, dtype=np.int16)
-        filtered_data = filter_signal(int_data, fs, cutoff, filter_type)
+        final_data = filter_signal(int_data, fs, cutoff, filter_type)
         # filtered_data = filter_signal_butter(int_data, fs, cutoff, filter_type)
+        if effect_type:
+            final_data = apply_effect(final_data, effect_type, depth, fs)
 
-        effect_data = apply_effect(filtered_data, effect_type, depth, fs)
-        final_data = np.clip(effect_data, -32768, 32767)
-        int_final_data = final_data.astype(np.int16)
+        final_data = np.clip(final_data, -32768, 32767)
+        final_data = final_data.astype(np.int16)
 
-        data = int_final_data.tobytes()
+        data = final_data.tobytes()
     return (data, pyaudio.paContinue)
 
 
@@ -76,13 +83,8 @@ vc = cv2.VideoCapture(args.device)
 width = vc.get(3)  # float `width`
 height = vc.get(4)
 
-max_freq = 5000
-min_freq = 0
 
-min_depth = 0
-max_depth = 0.5
-
-print("web cam width, and height", width, height)
+# print("web cam width, and height", width, height)
 if vc.isOpened():
     rval, frame = vc.read()
 else:
