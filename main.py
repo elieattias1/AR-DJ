@@ -70,7 +70,7 @@ def callback(in_data, frame_count, time_info, status):
         final_data = filter_signal(int_data, fs, cutoff, filter_type)
         # filtered_data = filter_signal_butter(int_data, fs, cutoff, filter_type)
         if effect_type:
-            final_data = apply_effect(final_data, effect_type, depth, fs)
+            final_data = apply_effect(final_data, effect_type, depth, fs, cx)
 
         final_data = np.clip(final_data, -32768, 32767)
         final_data = final_data.astype(np.int16)
@@ -102,7 +102,7 @@ if args.hands != -1:
 print("starting audio...")
 
 filename = f"audios/{args.filename}.wav"
-cutoff, depth, frame_count = 500, 0, 8192
+cutoff, depth, frame_count = 500, 0, 16384
 wf = wave.open(filename, "rb")
 
 p = pyaudio.PyAudio()

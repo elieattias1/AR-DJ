@@ -33,6 +33,22 @@ def apply_vibrato(y, sr, depth=0.005, freq=5.0):
     return y[indices]
 
 
+def apply_resonance(y, sr, freq, depth, Q=100.0):
+    """Apply resonance effect by boosting the frequency around 'freq'."""
+    freqs = np.fft.fftfreq(len(y), d=1 / sr)
+    fft = np.fft.fft(y)
+
+    # Create a band-pass filter centered around 'freq' with a bandwidth of 'Q'
+    bandwidth = freq / Q
+    band = (np.abs(freqs - freq) <= bandwidth / 2) | (
+        np.abs(freqs + freq) <= bandwidth / 2
+    )
+    fft[band] *= depth  # Amplify the resonance frequencies
+
+    y_resonant = np.fft.ifft(fft).real
+    return y_resonant
+
+
 def filter_signal(y, sr, cutoff, filter_type, effect="tremolo"):
     """Filter signal using FFT."""
 
@@ -57,11 +73,13 @@ def filter_signal(y, sr, cutoff, filter_type, effect="tremolo"):
     return y_filtered
 
 
-def apply_effect(y, effect_type, depth, sr):
+def apply_effect(y, effect_type, depth, sr, cx):
     if effect_type == "tremolo":
         y = apply_tremolo(y, depth=depth, sr=sr)
     elif effect_type == "vibrato":
         y = apply_vibrato(y, depth=depth / 1000, sr=sr)
+    elif effect_type == "resonance":
+        y = apply_resonance(y=y, sr=sr, freq=cx, depth=10 * depth)
     return y
 
 
@@ -87,7 +105,7 @@ def draw_axis(frame, filter_type, effect_type):
     )
     cv2.putText(
         frame,
-        f"{filter_type} Pass - Cut-off Frequency",
+        f"{filter_type.capitalize()} Pass - Cut-off Frequency",
         (width // 2 - 500, height - delta_x - 10),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,
@@ -106,7 +124,7 @@ def draw_axis(frame, filter_type, effect_type):
     )
     cv2.putText(
         frame,
-        f"{effect_type} Depth",
+        f"{effect_type.capitalize()} Depth",
         (delta_x + 10, height // 2),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,

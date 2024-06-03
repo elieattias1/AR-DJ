@@ -1,1 +1,1 @@
-Add your audio files here. 
+Add your audio files (as .wav files)  here. 
