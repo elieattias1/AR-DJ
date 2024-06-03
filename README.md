@@ -24,7 +24,7 @@ cd models && powershell .\download-models.ps1
 ## Run the Application 
 ```bash
 # with python 3
-python demo_webcam.py
+python main.py
 ```
 
 ### Models
