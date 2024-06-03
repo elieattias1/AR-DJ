@@ -60,7 +60,7 @@ python main.py --filename=your-audio --effect=vibrato
 
 ### Models
 
-The following models trained by [cansik's](https://github.com/cansik) can be selected by adjusting the --network parameter: `normal`, `tiny`, `prn`, and `v4-tiny`.
+The following models trained by [cansik](https://github.com/cansik) can be selected by adjusting the --network parameter: `normal`, `tiny`, `prn`, and `v4-tiny`.
 
 - YOLOv3 Cross-Dataset
 	- [Configuration](https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands.cfg)
