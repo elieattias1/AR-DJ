@@ -73,7 +73,7 @@ def filter_signal(y, sr, cutoff, filter_type, effect="tremolo"):
     return y_filtered
 
 
-def apply_effect(y, effect_type, depth, sr, cx):
+def apply_effect(y, effect_type, depth, sr, cx=0.5):
     if effect_type == "tremolo":
         y = apply_tremolo(y, depth=depth, sr=sr)
     elif effect_type == "vibrato":
@@ -99,7 +99,7 @@ def draw_axis(frame, filter_type, effect_type):
         frame,
         (delta_x, height - delta_x),
         (width - delta_x, height - delta_x),
-        (0, 0, 0),
+        (0, 0, 255),
         2,
         tipLength=0.03,
     )
@@ -109,7 +109,7 @@ def draw_axis(frame, filter_type, effect_type):
         (width // 2 - 500, height - delta_x - 10),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,
-        (0, 0, 0),
+        (0, 0, 255),
         2,
     )
 
@@ -118,7 +118,7 @@ def draw_axis(frame, filter_type, effect_type):
         frame,
         (delta_x, height - delta_x),
         (delta_x, delta_x),
-        (0, 0, 0),
+        (0, 0, 255),
         2,
         tipLength=0.03,
     )
@@ -128,7 +128,7 @@ def draw_axis(frame, filter_type, effect_type):
         (delta_x + 10, height // 2),
         cv2.FONT_HERSHEY_SIMPLEX,
         2,
-        (0, 0, 0),
+        (0, 0, 255),
         2,
     )
 
